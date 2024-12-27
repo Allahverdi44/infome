@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güneş Sistemi ve Yıldızlar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+            margin-top: -75px;
+            margin-left: -75px;
+            box-shadow: 0 0 50px rgba(255, 204, 0, 0.7);
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .planet1 {
+            width: 30px;
+            height: 30px;
+            background-color: #2196F3;
+            animation-duration: 5s;
+        }
+
+        .planet2 {
+            width: 40px;
+            height: 40px;
+            background-color: #FF5722;
+            animation-duration: 8s;
+        }
+
+        .planet3 {
+            width: 50px;
+            height: 50px;
+            background-color: #9C27B0;
+            animation-duration: 12s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg) translateX(200px);
+            }
+            100% {
+                transform: rotate(360deg) translateX(200px);
+            }
+        }
+
+        .text {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            opacity: 0;
+            white-space: nowrap;
+            animation: typing 5s steps(40) 1s forwards, fadeIn 3s forwards;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .start-text {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInStart 3s 3s forwards;
+        }
+
+        @keyframes fadeInStart {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+    <div class="planet planet1"></div>
+    <div class="planet planet2"></div>
+    <div class="planet planet3"></div>
+    <div class="text">Allahverdi'nin Saytına Xoş Gəlmişsiniz :)</div>
+    <div class="start-text" onclick="redirectToMen()">Başla</div>
+
+    <script>
+        for (let i = 0; i < 200; i++) {
+            let star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            document.body.appendChild(star);
+        }
+
+        function redirectToMen() {
+            window.location.href = 'men.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        /* Ümumi Tərz */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, #000000, #1a1a1a, #000033);
+            color: #f0f0f0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ulduz effekti */
+        body:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            background-image: url('https://source.unsplash.com/1920x1080/?stars,universe');
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Yağış effekti */
+        .rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .rain span {
+            position: absolute;
+            display: block;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent);
+            animation: rain 1s linear infinite;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Güneş Efekti */
+        .sun {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 255, 0, 0.8), rgba(255, 165, 0, 0.6), rgba(255, 69, 0, 0.4));
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(255, 255, 0, 0.5), 0 0 150px rgba(255, 165, 0, 0.4);
+            animation: sunRise 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes sunRise {
+            0% {
+                transform: translateX(-50%) scale(1) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2) translateY(-20px);
+            }
+            100% {
+                transform: translateX(-50%) scale(1) translateY(0);
+            }
+        }
+
+        /* Başlıq */
+        header {
+            text-align: center;
+            padding: 40px 10%;
+            background: linear-gradient(135deg, #111111, #222222);
+            border-bottom: 3px solid #00bfff;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #00bfff;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #f0f0f0;
+        }
+
+        /* Naviqasiya */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 15px 0;
+            background: #111111;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #f0f0f0;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+            background: #222;
+            border: 1px solid #444;
+        }
+
+        nav a:hover {
+            background: #00bfff;
+            color: #111;
+            border-color: #00bfff;
+            transform: scale(1.1);
+        }
+
+        /* Bölmələr */
+        .section {
+            width: 80%;
+            margin: 30px auto;
+            background: rgba(17, 17, 17, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        .section h2 {
+            color: #00bfff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .section p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            color: #d1d1d1;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            color: #111;
+            background: #00bfff;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #0088cc;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        /* Animasiyalar */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+            background: #111;
+            color: #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="rain">
+    <span style="left: 20%; animation-delay: 0s;"></span>
+    <span style="left: 40%; animation-delay: 0.2s;"></span>
+    <span style="left: 60%; animation-delay: 0.4s;"></span>
+    <span style="left: 80%; animation-delay: 0.6s;"></span>
+    <span style="left: 90%; animation-delay: 0.8s;"></span>
+</div>
+
+<!-- Güneş efekti -->
+<div class="sun"></div>
+
+<header>
+    <h1>Web Developer Portfolio</h1>
+    <p>Portfolio Səhifəsi</p>
+</header>
+
+<nav>
+    <a href="#" onclick="navigate('about')">Haqqında</a>
+    <a href="#" onclick="navigate('services')">Xidmətlər</a>
+    <a href="#" onclick="navigate('projects')">Layihələr</a>
+    <a href="#" onclick="navigate('contact')">Əlaqə</a>
+</nav>
+
+<section id="content" class="section">
+    <h2>Xoş Gəlmisiniz!</h2>
+    <p>Salam! Mən Allahverdi Allahverdiyev. Kreativ dünyamda müasir və təsirli veb layihələr yaradıram. Müasir texnologiyalar və innovasiyalar mənim əsas silahımdır! Aşağıda mənim haqqımda, xidmətlərim və həyata keçirdiyim layihələr haqqında daha çox məlumat əldə edə bilərsiniz.</p>
+</section>
+
+<footer>
+    <p>&copy; 2024 Allahverdi Allahverdiyev. Bütün hüquqlar qorunur. | <a href="mailto:allahverdi20242024@gmail.com">Əlaqə</a></p>
+</footer>
+
+<script>
+    // Dinamik bölmə dəyişimi
+    function navigate(section) {
+        const content = document.getElementById('content');
+        content.style.opacity = 0;
+        setTimeout(() => {
+            let html = '';
+
+            switch (section) {
+                case 'about':
+                    html = `
+                        <h2>Haqqında</h2>
+                        <p>Mən Allahverdi Allahverdiyev, 18 yaşımda bir Azərbaycanlı web developer'iyəm. AzTU-da Kompüter Mühəndisliyi üzrə təhsil alıram. 11-ci sinifdə 551 bal toplayaraq, yüksək akademik göstəricilərimlə gələcəkdə daha böyük layihələrdə iştirak etməyi hədəfləyirəm. Web proqramlaşdırma sahəsində ixtisaslaşmışam və əsas məqsədim müasir və təsirli web saytları yaratmaqdır. Müasir texnologiyalar və innovasiyalar mənim əsas silahımdır!</p>
+                    `;
+                    break;
+                case 'services':
+                    html = `
+                        <h2>Xidmətlər</h2>
+                        <ul>
+                            <li><strong>Web Proqramlaşdırma:</strong> Müasir veb saytlar və tətbiqlərin yaradılması, responsiv dizayn, API inteqrasiyası və s.</li>
+                            <li><strong>Qrafik Dizayn:</strong> Web dizaynı, logo dizaynı, veb səhifə interaktivliyi üçün qrafik elementlər və animasiyalar.</li>
+                            <li><strong>Oyun Layihələri:</strong> Web oyunları üçün dinamik və interaktiv layihələr hazırlama.</li>
+                            <li><strong>Startap Konsultasiyaları:</strong> Gənc və yeni başlayan startaplar üçün texniki məsləhət xidmətləri.</li>
+                        </ul>
+                        <p>Yuxarıda qeyd olunan xidmətlərimlə yanaşı, hər zaman yeni texnologiyaları öyrənir və layihələrimi daha da inkişaf etdirirəm. Hər bir layihə üçün özünəməxsus yanaşma və kreativ həllər təqdim edirəm.</p>
+                    `;
+                    break;
+                case 'projects':
+                    html = `
+                        <h2>Layihələr</h2>
+                        <p>İndi isə həyata keçirdiyim layihələri təqdim edirəm:</p>
+                        <ul>
+                            <li><strong>Layihə 1:</strong> <em>"Web Saytın Yaradılması"</em> - Tələbələrin dərs keçidlərini daha asan təşkil etmək üçün yaratdığım bir web platforması.</li>
+                            <li><strong>Layihə 2:</strong> <em>"E-ticarət Platforması"</em> - Kiçik və orta bizneslər üçün yaradılan onlayn satış saytları.</li>
+                            <li><strong>Layihə 3:</strong> <em>"Mobil Oyun"</em> - Android və iOS üçün yaradılmış interaktiv oyun.</li>
+                        </ul>
+                    `;
+                    break;
+                case 'contact':
+                    html = `
+                        <h2>Əlaqə</h2>
+                        <p>Email: <a href="mailto:allahverdi20242024@gmail.com">allahverdi20242024@gmail.com</a></p>
+                        <p>Telefon: +994 50 736 20 40</p>
+                        <p>Instagram: <a href="https://instagram.com/allahverdi__44" target="_blank">allahverdi__44</a></p>
+                        <p>Ünvan: Bakı şəhəri, Həzi Aslanov</p>
+                    `;
+                    break;
+                default:
+                    html = `
+                        <h2>Xoş Gəlmisiniz!</h2>
+                        <p>Web inkişafında səyahətinizə başlamağa hazırsınızmı? Mənim layihələrimlə daha yaxından tanış olmaq üçün səhifəmi araşdırın!</p>
+                    `;
+            }
+
+            content.innerHTML = html;
+            content.style.opacity = 1;
+        }, 300);
+    }
+</script>
+
+</body>
+</html>
